@@ -1,0 +1,66 @@
+{% extends 'todolist/layouts/main.html' %}
+{% block content %}
+<div class="container" style="margin-top:70px;">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="mb-3">REGISTER PAGE</h1>
+            <hr style="border-color:#b8bfc2">
+            {% include "todolist/inc/message.html" %} 
+
+        </div>
+    </div>
+    <section class="py-4 my-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <form method="post" action="">
+                        {% csrf_token %}
+                        <div class="mb-4">
+                            <label for="" class="form-label">Username</label>
+                            {{form.username}}
+                        </div>
+                        <div class="mb-4">
+                            <label for="" class="form-label">Email Address</label>
+                            {{form.email}}
+                        </div>
+                        <div class="mb-4">
+                            <label for="" class="form-label">Password</label>
+                            {{form.password1}}
+                        </div>
+                        <div class="mb-4">
+                            <label for="" class="form-label">Confirm Password</label>
+                            {{form.password2}}
+                        </div>
+                        <button type="submit" class="btn btn-primary button">Register</button>
+                    </form>
+                    
+                    <p class="my-2">Already User? <a class="button" href="{% url 'login' %}" style="text-decoration: none;padding:5px;">Login</a> </p>
+                </div>
+                <div class="col-6">
+
+                    <div class="mb-4">
+                        {% if form.errors.username %}
+                        <label for="" class="text-danger d-block">{{form.errors.username}}</label>
+                        {% endif %}
+                    </div>
+                    <div class="mb-4">
+                        {% if form.errors.email %}
+                        <label for="" class="text-danger d-block">{{form.errors.email}}</label>
+                        {% endif %}
+                    </div>
+                    <div class="mb-4">
+                        {% if form.errors.password1 %}
+                        <label for="" class="text-danger d-block">{{form.errors.password1}}</label>
+                        {% endif %}
+                    </div>
+                    <div class="mb-4">
+                        {% if form.errors.password2 %}
+                        <label for="" class="text-danger d-block">{{form.errors.password2}}</label>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock content %}
